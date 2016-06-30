@@ -21,7 +21,6 @@ class puppet::master::debian inherits puppet::master::package {
     Service['puppetmaster'] {
       hasstatus  => true,
       hasrestart => true,
-      require    +> File['/etc/default/puppetmaster'],
       subscribe  +> File['/etc/default/puppetmaster'],
     }
   }
