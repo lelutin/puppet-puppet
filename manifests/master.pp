@@ -5,6 +5,7 @@ class puppet::master(
   $fileserver                       = '/etc/puppet/fileserver.conf',
   $http_compression                 = false,
   $cleanup_clientbucket             = false,
+  $use_cron                         = true,
   $cron_time                        = false,
   $storeconfigs                     = false,
   $ensure_version                   = 'installed',
@@ -21,7 +22,7 @@ class puppet::master(
   $shorewall_puppetmaster_signport  = 8141,
   $manage_munin                     = false
 ) {
-  if $cron_time {
+  if $use_cron {
     class{'puppet::cron':
       config                          => $config,
       config_content                  => $config_content,
